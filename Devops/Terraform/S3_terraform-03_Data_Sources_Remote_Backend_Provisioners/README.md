@@ -92,6 +92,8 @@ terraform destroy
 
 - Go to the AWS console and attach ``DynamoDBFullAccess`` policy to the existing role.
 
+## In order to prevent the usage of terraform simultaneously by two or more user we lock the tf.state file with in aws dynamodb and s3 (backup the tf.state file) in Azure with azureblob ans so on.
+
 ![state-locking](state-locking.png)
 
 - Create a new folder named  `s3-backend` and a file named `backend.tf`. 
