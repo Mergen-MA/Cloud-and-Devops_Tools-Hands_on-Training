@@ -2,6 +2,8 @@
 
 Purpose of the this hands-on training is to give students the knowledge of terraform modules and import in Terraform.
 
+Terraform dışında oluşturulmuş resourceları terraform kontrolü altına almak için import komutunu kullanıyoruz. Bunu yapmak için main.tf'e import edeceğimiz tüm resourceların birebir aynısını yazıyoruz. terraform import komutunu kullanarak bu resourceları terraforma bağlamış oluyoruz. Eğer main.tf'te herhangi bir resourceun herhangi bir özelliğini farklı yazarsak import edemiyor. 
+
 ## Learning Outcomes
 
 At the end of the this hands-on training, students will be able to;
