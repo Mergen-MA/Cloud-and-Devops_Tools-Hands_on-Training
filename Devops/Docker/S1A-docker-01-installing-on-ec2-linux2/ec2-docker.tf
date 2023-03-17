@@ -16,7 +16,7 @@ provider "aws" {
 locals {
   instance-type = "t2.micro"
   key-name = "clarusway"
-  secgr-dynamic-ports = [22,80,443]
+  secgr-dynamic-ports = [22,80,443,8080]
   user = "clarusway"
 }
 
