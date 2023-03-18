@@ -2,6 +2,12 @@
 
 Purpose of the this hands-on training is to teach the students how to install Docker on on Amazon Linux 2 EC2 instance.
 
+Renkli Terminal
+
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+export PS1="\[\e[1;34m\]\u\[\e[33m\]@\h# \W:\[\e[32m\]\\$\[\e[m\] "
+
 ## Learning Outcomes
 
 At the end of the this hands-on training, students will be able to;
