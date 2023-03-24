@@ -16,7 +16,7 @@ locals {
   mytag = "mali-tf-ins"
 }
 
-data "aws_ami" "tf_ami" {
+data "aws_ami" "tf-ami" {
   most_recent      = true
   owners           = ["self"]
 
@@ -25,8 +25,9 @@ data "aws_ami" "tf_ami" {
     values = ["hvm"]
   }
 }
+
 resource "aws_instance" "tf-ec2" {
-  ami                    = data.aws_ami.tf_ami.id
+  ami                    = data.aws_ami.tf-ami.id
   instance_type          = var.ec2_type
   key_name                = "devops13"
   vpc_security_group_ids = [aws_security_group.mali-secgrp-tf.id]
