@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: DaemonSet #her bir nodeda kube-proxy olusturur. Mesela bir node virus programi yukleyecegiz bunu daemonset ile yapariz.
+metadata:
+  name: cw-deploy
+spec:
+  selector:
+    matchLabels:
+      app: cw
+  template:
+    metadata:
+      labels:
+        app: cw
+    spec:
+      containers:
+      - name: mydeploy
+        image: clarusway/cw_web_flask1
+        ports:
+        - containerPort: 5000

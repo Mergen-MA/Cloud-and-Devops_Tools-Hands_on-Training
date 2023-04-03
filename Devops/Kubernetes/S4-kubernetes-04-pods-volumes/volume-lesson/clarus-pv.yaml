@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: clarus-pv-vol
+  labels:
+    type: local 
+
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - "ReadWriteOnce"
+  hostPath: 
+    path: "/c/Users/MAA/Documents/IT/Clarusway-DevOps_widerum/Github/Devops_Path_Hands-on/Devops/Kubernetes/S4-kubernetes-04-pods-volumes/volume-lesson"

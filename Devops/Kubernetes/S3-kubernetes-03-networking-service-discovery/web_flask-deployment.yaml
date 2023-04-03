@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cw-deploy
+  labels:
+    app: cw
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: cw
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate  # Recreate yaparsak once tum podlar silinir sonra yenileri olusur. cok tavsiye edilmez.
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: cw
+    spec:
+      containers:
+      - name: mydeploy
+        image: clarusway/cw_web_flask1
+        ports:
+        - containerPort: 5000

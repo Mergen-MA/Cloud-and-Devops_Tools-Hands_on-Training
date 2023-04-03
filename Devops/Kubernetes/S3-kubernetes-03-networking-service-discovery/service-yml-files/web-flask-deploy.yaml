@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-flask-deploy
+  labels: 
+    app: web-flask
+  #namespace: demo 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-flask
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: web-flask
+    spec:
+      containers:
+      - name: web-flask
+        image: clarusway/cw_web_flask1
+       # env: 
+        #- name: DEMO_GREETING
+        #  value: "Hello from mali"
+        #- name: DEMO_FAREWELL
+        #  value: "Such a sweet sworm"
+        ports:
+        - containerPort: 5000

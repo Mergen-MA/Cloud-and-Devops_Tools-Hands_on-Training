@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume 
+metadata:
+  name: pv-3g
+  labels:
+    type: local 
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - "ReadWriteOnce"
+  hostPath:
+    path: "/c/Users/MAA/Documents/IT/Clarusway-DevOps_widerum/Github/Devops_Path_Hands-on/Devops/Kubernetes/S4-kubernetes-04-pods-volumes"
