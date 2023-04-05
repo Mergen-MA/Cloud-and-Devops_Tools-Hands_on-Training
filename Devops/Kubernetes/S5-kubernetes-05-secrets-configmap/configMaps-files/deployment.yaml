@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: demo 
+  labels: 
+    app: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo   
+  template:
+    metadata:
+      labels:
+        app: demo 
+    spec:
+      containers:
+        - name: demo-cnt
+          image: clarusway/demo:hello-config-file #env method 1 ve 2 de.
+          ports:
+          - containerPort: 8888
+
+# Method 3
+          volumeMounts:
+            - mountPath: /config/
+              name: demo-config-volume
+              readOnly: true
+      volumes:
+      - name: demo-config-volume
+        configMap:
+          name: demo-config
+          items:
+          - key: config 
+            path: demo.yaml
+
+# Method 1
+          # envFrom:
+          #   - configMapRef:
+          #       name: demo-config
+
+# Method 2   
+          # env:
+          #   - name: GREETING 
+          #     #value: selam
+          #     valueFrom:
+          #       configMapKeyRef:
+          #         key: greeting 
+          #         name: demo-config 
+  
+    

@@ -1,0 +1,21 @@
+# apiVersion: v1
+# kind: ConfigMap 
+# metadata:
+#   name: demo-config
+# data: 
+#   #greeting: Hola
+#   GREETING: Merhaba 
+
+apiVersion: v1 
+kind: ConfigMap 
+metadata: 
+  name: demo-config
+data: 
+  config: |
+    greeting: Buongiorno
+
+  # config2: |
+  #   greeeting1: Buongiorno1
+
+  # config3: |
+  #   greeting3:Buongiorno2 
