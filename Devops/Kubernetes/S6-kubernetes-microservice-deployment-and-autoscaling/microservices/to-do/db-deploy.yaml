@@ -1,0 +1,61 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: db-deploy
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       name: mongo
+#   template:
+#     metadata:
+#       labels:
+#         name: mongo
+#         app: todoapp
+#     spec:
+#       containers:
+#       - name: mongo
+#         image: mongo:5.0
+#         ports:
+#         - containerPort: 27017
+#         volumeMounts:
+#           - name: mongo-storage
+#             mountPath: /data/db
+#       volumes:
+#         #- name: mongo-storage
+#         #  hostPath:
+#         #    path: /home/ubuntu/pv-data
+#         - name: mongo-storage
+#           persistentVolumeClaim:
+#             claimName: db-pvc-vol
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongo
+  template:
+    metadata:
+      labels:
+        name: mongo
+        app: todoapp
+    spec:
+      containers:
+      - image: mongo:5.0
+        name: mongo
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+          - name: mongo-storage
+            mountPath: /data/db
+      volumes:
+        #- name: mongo-storage
+        #  hostPath:
+        #    path: /home/ubuntu/pv-data
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: db-pvc-vol
