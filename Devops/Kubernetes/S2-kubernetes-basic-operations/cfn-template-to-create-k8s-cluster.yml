@@ -11,8 +11,8 @@ Description: |
   This template is designed for us-east-1 (N. Virginia) region. If you work on another region, do not forget to change instances imageId
 
 Parameters:
-  KeyPairName: Devops13
-    Description: Enter the name of your Key Pair for SSH connections.
+  KeyPairName:
+    Description: Devops13
     Type: AWS::EC2::KeyPair::KeyName
     ConstraintDescription: Must be one of the existing EC2 KeyPair
 

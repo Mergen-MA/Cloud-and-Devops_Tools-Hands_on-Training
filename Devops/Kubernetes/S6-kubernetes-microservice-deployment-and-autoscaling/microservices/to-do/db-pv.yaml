@@ -6,9 +6,9 @@ metadata:
     type: local
 spec:
   storageClassName: manual
-  capacity:
+  capacity: 
     storage: 5Gi
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "home/ubuntu/pv-data"
+    path: "/home/lesson/pv-data"
