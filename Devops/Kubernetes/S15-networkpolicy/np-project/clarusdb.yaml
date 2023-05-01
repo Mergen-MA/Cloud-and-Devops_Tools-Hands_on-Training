@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: clarusshop-deployment
-  namespace: clarusshop-ns
+  name: clarusdb-deployment
+  namespace: clarusdb-ns
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: clarusshop
+      db: clarusdb
   template:
     metadata:
       labels:
-        app: clarusshop
+        db: clarusdb
     spec:
       containers:
-      - name: clarusshop
-        image: clarusway/clarusshop
+      - name: clarusdb
+        image: clarusway/clarusdb:v1
         ports:
         - containerPort: 80
         resources: {}
@@ -24,14 +24,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: clarusshop-svc
-  namespace: clarusshop-ns
+  name: clarusdb-svc
+  namespace: clarusdb-ns
 spec:
   selector:
-    app: clarusshop
+    db: clarusdb
   type: ClusterIP
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
-          
