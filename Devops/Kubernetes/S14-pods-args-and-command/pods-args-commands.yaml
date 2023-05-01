@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: args-commands
+  labels:
+    purpose: args-commands
+spec:
+  containers:
+  - name: args-commands
+    image: clarusway/entrypoint-cmd
+    command: ["sleep"] # This overwrites ENTRYPOINT in Dockerfile.
+    args: ["10"] # this overwrites CMD in Dockerfile.
+  restartPolicy: OnFailure
+
+  env:
+  - name: firstkey
+    value: "firstkey"
+  - name: secondkey
+    value: "secondvalue"
+
+# command attribute overwrites the entrypoint, args attribute overwrites CMD.
