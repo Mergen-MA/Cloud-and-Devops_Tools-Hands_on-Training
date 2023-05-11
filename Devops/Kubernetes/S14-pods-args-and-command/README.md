@@ -171,7 +171,7 @@ spec:
       value: "secondvalue"
 ```
 
-> Note: `command` field in a pod object overwrites `ENTRYPOINT` in Dockerfile, and `args` field overwrites CMD in Dockerfile.
+> clarusway/entrypoint-cmd
 
 > Note: We don't change sleep command to make it easy to understand. So, in our case `command` field is `ineffective`. But, if we want to change `ENTRYPOINT field in Dockerfile`, we can change it with `command field of a pod`. 
 
