@@ -220,8 +220,8 @@ pipeline {
 - Commit and push the changes to the remote repo on GitHub.
 
 ```bash
-git add .
-git commit -m 'updated jenkinsfile and added pipeline.py'
+git add . \
+git commit -m 'updated jenkinsfile and added pipeline.py' \
 git push
 ```
 
