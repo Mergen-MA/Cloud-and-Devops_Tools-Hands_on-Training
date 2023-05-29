@@ -2,7 +2,7 @@ variable "tags" {
   default = ["control_node", "node_1", "node_2"]
 }
 variable "mykey" {
-  default = "clarusway"
+  default = "Devops13"
 }
 variable "user" {
   default = "clarusway"
