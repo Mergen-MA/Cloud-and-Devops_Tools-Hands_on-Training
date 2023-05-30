@@ -1,0 +1,29 @@
+---
+- name: Copy for Linux
+  hosts: webservers
+  tasks:
+   - name: Copy your file into the webservers
+     ansible.builtin.copy:
+       src: /home/ec2-user/testfile1
+       dest: /home/ec2-user/testfile1
+       mode: u+rw,g-wx,o-rwx
+
+- name: Copy for ubuntu
+  hosts: ubuntuservers
+  tasks:
+   - name: Copy your file to the ubuntuservers
+     ansible.builtin.copy:
+       src: /home/ec2-user/testfile1
+       dest: /home/ubuntu/testfile1
+       mode: u+rw,g-wx,o-rwx
+
+- name: Copy for node1
+  hosts: node1
+  tasks:
+   - name: Copy using inline content
+     ansible.builtin.copy:
+       content: 'This is content of file2' #echo komutu gibi
+       dest: /home/ec2-user/testfile2       
+
+   - name: Create a new text file
+     ansible.builtin.shell: "echo Hello World > /home/ec2-user/testfile3" 
