@@ -1,6 +1,7 @@
 ---
 - name: Copy for Linux
   hosts: webservers
+  become: true
   vars:
    key: value
   tasks:
