@@ -1,0 +1,34 @@
+---
+- name: Create users 
+  hosts: "*"
+  become: yes
+  tasks: 
+   - name: create user for REDHAT OS FAMILY
+     ansible.builtin.user:
+       name: "{{ item }}"
+       state: present
+     loop: 
+      - joe 
+      - matt
+      - james
+      - oliver
+     when: ansible_os_family == "Redhat"
+
+   - name: create user for SUSE OS FAMILY
+     ansible.builtin.user:
+       name: "{{ item }}" 
+       state: present
+     loop:
+      - david
+      - tyler
+     when: ansible_os_family == SUSE  
+
+   - name: create user for DEBIAN OS FAMILY
+     ansible.builtin.user:
+       name: "{{ item }}"
+       state: present
+     loop: 
+      - john 
+      - aaron
+     when: ansible_os_family == "Debian" or 
+     ansible_distribution_version == "20.04"  
