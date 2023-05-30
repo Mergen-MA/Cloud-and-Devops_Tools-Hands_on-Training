@@ -9,14 +9,14 @@
        state: latest
 
    - name: start Apache
-     ansible.builtin.shell: "service httpd start"action:
+     ansible.builtin.shell: "service httpd start"
 
 - name: Apache installation for ubuntuservers
   hosts: ubuntuservers
   become: yes
   tasks:
    - name: update
-     ansible.builtin.apt: "apt update -y"
+     ansible.builtin.shell: "apt update -y"
 
    - name: isntall the latest version of Apache
      ansible.builtin.apt:
