@@ -1,0 +1,21 @@
+---
+name: Remove Apache form webservers
+hosts: webservers
+become: yes
+tasks:
+ - name: Remove apache2
+   ansible.builtin.yum:
+     name: httpd
+     state: absent 
+     autoremove: yes
+
+- name: Remove Apache form ubuntuservers
+  hosts: ubuntuservers
+  become: yes
+  tasks: 
+   - name: Remove Apache
+     ansible.builtin.apt:
+       name: apache2
+       state: absent
+       autoremove: yes
+       purge: yes:
