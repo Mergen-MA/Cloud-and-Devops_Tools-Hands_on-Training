@@ -1,0 +1,12 @@
+---
+- name: create a user
+  hosts: all
+  become: true
+  vars_files:
+   - secret.yaml  # bu sekilde yazinca hata verir. 
+                  #farkli bir dosya ismiyle mesela "myfile" olsa hata vermezdi.
+  tasks: 
+   - name: create a user
+     ansible.builtin.user:
+      name: "{{ username }}"
+      password: "{{ password }}"

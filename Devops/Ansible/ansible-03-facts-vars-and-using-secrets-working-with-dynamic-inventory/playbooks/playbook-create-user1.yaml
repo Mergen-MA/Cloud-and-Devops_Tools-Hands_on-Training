@@ -1,0 +1,11 @@
+---
+- name: create a user 
+  hosts: all
+  become: true
+  vars_files: 
+   - secret1.yaml 
+  tasks:
+   - name: create user
+     ansible.builtin.user:
+      name: "{{ username }}"
+      password: "{{ pwhash | password_hash ('sha512') }}"
