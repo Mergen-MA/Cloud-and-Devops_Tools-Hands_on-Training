@@ -1,0 +1,8 @@
+--- 
+- name: Retrieve policy version
+  hosts: all 
+  tasks: 
+   - name: show policy version
+     ansible.builtin.debug:
+      msg: >
+       The policy version is {{ ansible_facts.selinux.policyvers }}
