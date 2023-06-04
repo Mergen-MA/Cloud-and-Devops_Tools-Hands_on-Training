@@ -1,0 +1,16 @@
+- name: run the db server
+  hosts: db_server
+  become: true
+  tasks: 
+   - ansible.builtin.include_tasks: ./tasks/db_tasks.yml
+
+  handlers:
+   - name: Restart mysql
+     ansible.builtin.service:
+      name: mysql
+      state: restarted
+      
+- name: run the web server
+  hosts: web_server
+  tasks:
+    - ansible.builtin.include_tasks: ./tasks/web_tasks.yml
