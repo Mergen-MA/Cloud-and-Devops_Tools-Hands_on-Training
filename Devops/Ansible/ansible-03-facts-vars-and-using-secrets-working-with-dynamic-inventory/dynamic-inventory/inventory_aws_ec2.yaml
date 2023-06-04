@@ -3,5 +3,7 @@ regions:
   - "us-east-1"
 keyed_groups: 
   - tags.Name
+filters:
+  tag:environment: dev
 compose:
   ansible_host: public_ip_address
