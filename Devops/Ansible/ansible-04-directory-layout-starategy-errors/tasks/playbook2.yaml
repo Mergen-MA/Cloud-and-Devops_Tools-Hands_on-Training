@@ -1,0 +1,24 @@
+- hosts: servers
+ # any_errors_fatal: true
+ # strategy: free
+ # serial: 2
+  tasks:
+    - ansible.builtin.debug:
+        msg: "task 1"
+
+    - ansible.builtin.debug:
+        msg: "task 2"
+
+# our intention is to make node3 fail in the third task.
+    - name: task 3
+      become: true
+      ansible.builtin.apt:
+        name: git
+        state: present
+   #   ignore_errors: true
+
+    - ansible.builtin.debug:
+        msg: "task 4"
+
+    - ansible.builtin.debug:
+        msg: "task 5"

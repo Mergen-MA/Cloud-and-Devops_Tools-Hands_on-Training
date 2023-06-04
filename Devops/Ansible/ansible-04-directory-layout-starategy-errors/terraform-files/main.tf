@@ -124,30 +124,30 @@ output "controlnodeip" {
 
 # uncomment the comment lines and run the terraform file with the instruction of the instructor.
 
-# resource "aws_instance" "nodes3" {
-#   ami = "ami-02396cdd13e9a1257"
-#   instance_type = var.instancetype
-#   key_name = var.mykey
-#   vpc_security_group_ids = [aws_security_group.tf-sec-gr.id]
-#   tags = {
-#     Name = "node3-${local.user}"
-#   }
-# }
+resource "aws_instance" "nodes3" {
+  ami = "ami-02396cdd13e9a1257"
+  instance_type = var.instancetype
+  key_name = var.mykey
+  vpc_security_group_ids = [aws_security_group.tf-sec-gr.id]
+  tags = {
+    Name = "node3-${local.user}"
+  }
+}
 
-# resource "null_resource" "config2" {
-#   depends_on = [aws_instance.nodes[0]]
-#   connection {
-#     host = aws_instance.nodes[0].public_ip
-#     type = "ssh"
-#     user = "ubuntu"
-#     private_key = file("${var.mykey}.pem")
-#     # Do not forget to define your key file path correctly!
-#   }
+resource "null_resource" "config2" {
+  depends_on = [aws_instance.nodes[0]]
+  connection {
+    host = aws_instance.nodes[0].public_ip
+    type = "ssh"
+    user = "ubuntu"
+    private_key = file("~/.ssh/${var.mykey}.pem")
+    # Do not forget to define your key file path correctly!
+  }
 
-#    provisioner "remote-exec" {
-#     inline = [
-#       "echo node3 ansible_host=${aws_instance.nodes3.private_ip} ansible_ssh_private_key_file=/home/ubuntu/${var.mykey}.pem ansible_user=ec2-user >> inventory.txt",
-#     ]
-#   }
-# }
+   provisioner "remote-exec" {
+    inline = [
+      "echo node3 ansible_host=${aws_instance.nodes3.private_ip} ansible_ssh_private_key_file=/home/ubuntu/${var.mykey}.pem ansible_user=ec2-user >> inventory.txt",
+    ]
+  }
+}
 
