@@ -1,0 +1,11 @@
+- name: run the servers
+  hosts: db_server
+  tasks:
+
+    - shell: "ls -a"
+      register: "abc"
+
+    - debug:
+      msg: "it contains these files: {{ abc }}"  
+
+# register "ls -a" isleminin sonucunu abc degiskenine atar. Debug da ekrana yazdirir.
