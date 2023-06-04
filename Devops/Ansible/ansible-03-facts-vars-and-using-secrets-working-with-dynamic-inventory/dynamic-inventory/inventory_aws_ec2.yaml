@@ -1,0 +1,7 @@
+plugin: aws_ec2
+regions:
+  - "us-east-1"
+keyed_groups: 
+  - tags.Name
+compose:
+  ansible_host: public_ip_address
