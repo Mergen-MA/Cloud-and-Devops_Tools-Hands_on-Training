@@ -9,3 +9,4 @@ filters:
   tag:environment: dev
 compose:
   ansible_host: public_ip_address
+# abc: private_ip_address           vpc de kullanilir.
