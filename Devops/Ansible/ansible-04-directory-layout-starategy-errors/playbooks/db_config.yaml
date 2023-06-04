@@ -9,7 +9,7 @@
     db_password: clarus1234 
   
   tasks: 
-    - name: set hostname:
+    - name: set hostname
       ansible.builtin.shell: "sudo hostnamectl set-hostname 
       {{ hostname }}"
 
@@ -61,11 +61,9 @@
     - name: Import database table
       community.mysql.mysql_db:
         name: "{{ db_name }}"   # This is the database schema name.
-        state: import  # This module is not idempotent when the state
-         property value is import.
+        state: import  # This module is not idempotent when the state property value is import.
         target: ~/init.sql # This script creates the products table.
-      when: resultOfShowTables.stdout == "" # This line checks if 
-      the table is already imported. If so this task doesn't run.
+      when: resultOfShowTables.stdout == "" # This line checks if the table is already imported. If so this task doesn't run.
 
     - name: Enable remote login to mysql
       ansible.builtin.lineinfile:
