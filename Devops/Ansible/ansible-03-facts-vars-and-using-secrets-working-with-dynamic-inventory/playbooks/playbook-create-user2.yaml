@@ -6,4 +6,4 @@
    - myfile
   tasks: 
    - debug: 
-      msg: "name is {{ dns_name | upper }}"
+      msg: "name is {{ dns_name | upperc }}"
