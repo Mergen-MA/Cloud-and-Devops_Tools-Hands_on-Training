@@ -8,3 +8,8 @@
 
 - src: git+https://github.com/UnderGreen/ansible-prometheus-node-exporter
   version: master
+
+  # ansible-galaxy install -r role-requirements.yaml
+
+  tasks:
+   - ansible.builtin.import_tasks: './slack.yml' 
