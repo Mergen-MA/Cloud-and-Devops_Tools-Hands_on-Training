@@ -1,5 +1,5 @@
 - name: install and start apache
   hosts: web_server_1
   become: true
-  role: 
+  roles: 
    - apache
